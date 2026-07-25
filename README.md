@@ -28,6 +28,59 @@ This skill is the resulting four-stage process, plus the calibration mechanism t
 
 Drop `SKILL.md` into `.claude/skills/suite-workflow/` in your project. Claude Code picks up project-level skills automatically at session start. You'll also want to build your own decision-profile document as you use it — this skill assumes one exists but doesn't ship one, since it's inherently personal to whoever's using it.
 
+## Reference implementation
+
+The calibration rubric from the skill's "Calibrating the decision profile" section has a small standard-library reference scorer at [`examples/score_calibration.py`](examples/score_calibration.py), plus worked example inputs in [`examples/sample_predictions.json`](examples/sample_predictions.json) and [`examples/sample_answers.json`](examples/sample_answers.json).
+
+It keeps the scoring heuristic intentionally simple: 6 points for an exact decision match, plus up to 4 points from naive keyword overlap in the reasoning text.
+
+Run it with:
+
+```bash
+python3 examples/score_calibration.py \
+  examples/sample_predictions.json \
+  examples/sample_answers.json
+```
+
+Sample output:
+
+```text
+Calibration scoring breakdown
+==============================
+1. Should we launch a paid community?
+   Predicted decision: No
+   Actual decision:    No
+   Decision points:    6/6
+   Reasoning points:   4/4 (overlap: and, burden, cost, moderation, recurring)
+   Question score:     10/10
+
+2. Should we test short-form video first?
+   Predicted decision: Yes
+   Actual decision:    Yes
+   Decision points:    6/6
+   Reasoning points:   4/4 (overlap: and, cost, fast, feedback, low, production)
+   Question score:     10/10
+
+3. Should we take on a custom consulting project?
+   Predicted decision: No
+   Actual decision:    No
+   Decision points:    6/6
+   Reasoning points:   2/4 (overlap: from, it)
+   Question score:     8/10
+
+4. Should we run a low-budget webinar test?
+   Predicted decision: Yes
+   Actual decision:    Yes
+   Decision points:    6/6
+   Reasoning points:   2/4 (overlap: experiment, quick)
+   Question score:     8/10
+
+Total points: 36/40
+Total score:  90.0/100
+Pass bar:     90.0/100
+PASS
+```
+
 ## License
 
 MIT — see [LICENSE](LICENSE).

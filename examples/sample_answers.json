@@ -1,0 +1,22 @@
+[
+  {
+    "question": "Should we launch a paid community?",
+    "actual_decision": "No",
+    "actual_reasoning": "Recurring cost and moderation burden."
+  },
+  {
+    "question": "Should we test short-form video first?",
+    "actual_decision": "Yes",
+    "actual_reasoning": "Fast feedback and low production cost."
+  },
+  {
+    "question": "Should we take on a custom consulting project?",
+    "actual_decision": "No",
+    "actual_reasoning": "It distracts from the roadmap."
+  },
+  {
+    "question": "Should we run a low-budget webinar test?",
+    "actual_decision": "Yes",
+    "actual_reasoning": "Quick experiment before any large spend."
+  }
+]
