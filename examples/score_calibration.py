@@ -11,6 +11,23 @@ from pathlib import Path
 
 
 TOKEN_RE = re.compile(r"[A-Za-z0-9]+")
+STOPWORDS = {
+    "a",
+    "an",
+    "and",
+    "any",
+    "before",
+    "for",
+    "from",
+    "in",
+    "it",
+    "of",
+    "on",
+    "or",
+    "the",
+    "to",
+    "with",
+}
 
 
 def parse_args() -> argparse.Namespace:
@@ -51,7 +68,11 @@ def load_json_list(path: Path, required_fields: tuple[str, ...]) -> list[dict[st
 
 
 def tokenize(text: str) -> list[str]:
-    return [token.lower() for token in TOKEN_RE.findall(text)]
+    return [
+        token.lower()
+        for token in TOKEN_RE.findall(text)
+        if token.lower() not in STOPWORDS
+    ]
 
 
 def score_reasoning(predicted_reasoning: str, actual_reasoning: str) -> tuple[int, list[str]]:

@@ -32,7 +32,7 @@ Drop `SKILL.md` into `.claude/skills/suite-workflow/` in your project. Claude Co
 
 The calibration rubric from the skill's "Calibrating the decision profile" section has a small standard-library reference scorer at [`examples/score_calibration.py`](examples/score_calibration.py), plus worked example inputs in [`examples/sample_predictions.json`](examples/sample_predictions.json) and [`examples/sample_answers.json`](examples/sample_answers.json).
 
-It keeps the scoring heuristic intentionally simple: 6 points for an exact decision match, plus up to 4 points from naive keyword overlap in the reasoning text.
+It keeps the scoring heuristic intentionally simple: 6 points for an exact decision match, plus up to 4 points from naive keyword overlap in the reasoning text. The script filters a small set of common stopwords first, then counts distinct overlapping keywords and caps reasoning credit at 4 points.
 
 Run it with:
 
@@ -58,14 +58,14 @@ Calibration scoring breakdown
    Predicted decision: Yes
    Actual decision:    Yes
    Decision points:    6/6
-   Reasoning points:   4/4 (overlap: and, cost, fast, feedback, low, production)
+   Reasoning points:   4/4 (overlap: cost, fast, feedback, low)
    Question score:     10/10
 
 3. Should we take on a custom consulting project?
    Predicted decision: No
    Actual decision:    No
    Decision points:    6/6
-   Reasoning points:   2/4 (overlap: from, it)
+   Reasoning points:   2/4 (overlap: distracts, roadmap)
    Question score:     8/10
 
 4. Should we run a low-budget webinar test?

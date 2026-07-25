@@ -7,12 +7,12 @@
   {
     "question": "Should we test short-form video first?",
     "predicted_decision": "Yes",
-    "predicted_reasoning": "Fast feedback and low production cost."
+    "predicted_reasoning": "Fast feedback and low cost."
   },
   {
     "question": "Should we take on a custom consulting project?",
     "predicted_decision": "No",
-    "predicted_reasoning": "It pulls attention away from core delivery."
+    "predicted_reasoning": "Custom work distracts roadmap focus."
   },
   {
     "question": "Should we run a low-budget webinar test?",
