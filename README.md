@@ -51,7 +51,7 @@ Calibration scoring breakdown
    Predicted decision: No
    Actual decision:    No
    Decision points:    6/6
-   Reasoning points:   4/4 (overlap: and, burden, cost, moderation, recurring)
+   Reasoning points:   4/4 (overlap: burden, cost, moderation, recurring)
    Question score:     10/10
 
 2. Should we test short-form video first?

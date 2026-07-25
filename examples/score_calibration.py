@@ -143,6 +143,7 @@ def main() -> int:
         print(f"   Question score:     {question_points}/10")
         print()
 
+    # Empty answer sets score as 0/100 rather than crashing on division by zero.
     normalized_score = (total_points / max_points) * 100 if max_points else 0.0
     status = "PASS" if normalized_score >= args.bar else "FAIL"
 
