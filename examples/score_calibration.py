@@ -48,6 +48,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def load_json_list(path: Path, required_fields: tuple[str, ...]) -> list[dict[str, str]]:
+    """Load a JSON list of objects and ensure each object has the required fields."""
     with path.open("r", encoding="utf-8") as handle:
         data = json.load(handle)
 
@@ -68,14 +69,16 @@ def load_json_list(path: Path, required_fields: tuple[str, ...]) -> list[dict[st
 
 
 def tokenize(text: str) -> list[str]:
-    return [
-        token.lower()
-        for token in TOKEN_RE.findall(text)
-        if token.lower() not in STOPWORDS
-    ]
+    tokens: list[str] = []
+    for token in TOKEN_RE.findall(text):
+        normalized = token.lower()
+        if normalized not in STOPWORDS:
+            tokens.append(normalized)
+    return tokens
 
 
 def score_reasoning(predicted_reasoning: str, actual_reasoning: str) -> tuple[int, list[str]]:
+    """Return reasoning points and overlapping keywords, capped at 4 points."""
     # Reference heuristic only: count distinct overlapping keywords and cap at 4.
     predicted_tokens = set(tokenize(predicted_reasoning))
     actual_tokens = set(tokenize(actual_reasoning))
