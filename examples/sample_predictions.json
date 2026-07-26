@@ -1,0 +1,22 @@
+[
+  {
+    "question": "Should we launch a paid community?",
+    "predicted_decision": "No",
+    "predicted_reasoning": "Recurring cost and moderation burden."
+  },
+  {
+    "question": "Should we test short-form video first?",
+    "predicted_decision": "Yes",
+    "predicted_reasoning": "Fast feedback and low cost."
+  },
+  {
+    "question": "Should we take on a custom consulting project?",
+    "predicted_decision": "No",
+    "predicted_reasoning": "Custom work distracts roadmap focus."
+  },
+  {
+    "question": "Should we run a low-budget webinar test?",
+    "predicted_decision": "Yes",
+    "predicted_reasoning": "Quick experiment with the existing audience."
+  }
+]
